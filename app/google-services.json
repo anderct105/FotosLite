@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1079327066078",
+    "project_id": "entrega2-6a28b",
+    "storage_bucket": "entrega2-6a28b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079327066078:android:ded9ee7fe909d60585ff4f",
+        "android_client_info": {
+          "package_name": "ehu.das.entrega2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079327066078-rmic809ilg8nif8lb50heqk5s1q16e4t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACSJEQ5tGRG802bKfjwCT9oRtMr7DL1Kk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079327066078-rmic809ilg8nif8lb50heqk5s1q16e4t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
