@@ -41,6 +41,8 @@ public class MisFotosWidget extends AppWidgetProvider {
             System.out.println("Cargada imagen");
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
+        } catch (IllegalArgumentException iae) {
+
         }
     }
 

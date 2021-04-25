@@ -83,7 +83,7 @@ public class MenuFragment extends Fragment {
         Uri uriimagen = null;
         try {
             fichImg = File.createTempFile(nombrefich, ".jpg",directorio);
-            uriimagen = FileProvider.getUriForFile(getActivity(), "ehu.das.entrega2.provider", fichImg);
+            uriimagen = FileProvider.getUriForFile(getActivity(), "ehu.das.fotoslite.provider", fichImg);
         } catch (IOException e) {
             e.printStackTrace();
         }

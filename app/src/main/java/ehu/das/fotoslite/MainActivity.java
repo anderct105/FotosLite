@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     getImagenes();
+                    Log.i("tamano", String.valueOf(misFotos.size()));
                 }
             };
             cargarImagenes.run();

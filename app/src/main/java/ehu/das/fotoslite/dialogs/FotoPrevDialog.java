@@ -3,8 +3,11 @@ package ehu.das.fotoslite.dialogs;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.DialogFragment;
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
@@ -23,6 +27,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -78,8 +83,13 @@ public class FotoPrevDialog extends DialogFragment {
         // Las fotos del usuario se guardan en 'nombreUsuario/nombreFoto'
         StorageReference spaceRef = storageRef.child(LoginFragment.usuario + "/" + nombrefich);
         spaceRef.putFile(MenuFragment.uri);
+        // Añadir la foto al dispositivo
+        getActivity().getContentResolver().delete(MenuFragment.uri, null, null);
+
+
     }
 
+    @SuppressLint("MissingPermission")
     public void upload_database(String nombreFich) {
         FusedLocationProviderClient cliente = LocationServices.getFusedLocationProviderClient(getActivity());
         // Cogemos la ubicación antes de subir la foto
@@ -100,7 +110,11 @@ public class FotoPrevDialog extends DialogFragment {
                             new OneTimeWorkRequest.Builder(ConnectionDBServer.class).setInputData(datos).build();
                     WorkManager.getInstance(getActivity()).enqueue(trabajoPuntual);
                 } else {
-                    Toast.makeText(getContext(), "No se ha podido obtener la localización", Toast.LENGTH_LONG).show();
+                    try {
+                        Toast.makeText(getContext(), "No se ha podido obtener la localización", Toast.LENGTH_LONG).show();
+                    } catch (NullPointerException e) {
+                        System.out.println("No se puede obtener la ubicación");
+                    }
                 }
             }
         });
